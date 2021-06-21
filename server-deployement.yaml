@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind:  Deployment
+metadata:
+  name: server
+  labels:
+    app: server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+      - name: server
+        image: kb674/fighter_server_image_k8:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: DATABASE_URI
+          value: mysql+pymysql://root:( add the password )@mysql-service/( add the database)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server
+spec:
+  selector:
+    app: server
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
