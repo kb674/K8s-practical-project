@@ -4,7 +4,7 @@ Configuration files to deploy my fighter application  to an AKS cluster.
 # Set variables
 In db-deployement.yaml
 
-* Set ``MYSQL_DATABASE``. _eg. fighters_db, database1._
+* Set ``MYSQL_DATABASE``.  _(eg. fighters_db)_
 * Set ``MYSQL_ROOT_PASSWORD``. 
 
 In server-deployement.yaml
